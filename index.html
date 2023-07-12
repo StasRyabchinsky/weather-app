@@ -18,83 +18,65 @@
         <div class="main__search backColor">
           <form class="main__search" action="" method="get">
             <input
+              id="input"
               class="main__search backColor"
               type="text"
               placeholder="Search for Cities"
+              value=""
+              autosave='off'
+              autocomplete="off"
+              results="10"
+              incremental="incremental"
+              onsearch="OnSearch (this)"
             />
           </form>
         </div>
-        <section>
+        <div id="list" class="main__search__list backColor">
+          
+        </div>
+        <section class="section">
           <div class="sityWeather mainSize">
             <div class="sityWeather__container">
               <div class="sityWeather__containerForName">
-                <h3 class="sityWeather__name">Madrid</h3>
-                <p class="sityWeather__chanceOfRain">Chance of rain: 0%</p>
+                <h3 class="sityWeather__name"></h3>
+                <p class="sityWeather__chanceOfRain">Chance of rain:</p>
               </div>
-              <h2 class="sityWeather__temperature">31°</h2>
+              <h2 class="sityWeather__temperature"></h2>
             </div>
-            <img
-              src="./assets/img/sityWeatherSun.png"
-              alt=""
-              class="sityWeatherUrl"
-            />
+            <img src="" alt="" class="sityWeatherUrl" />
           </div>
           <div class="forecastWeather mainSize backColor">
             <p class="__title">today's forecast</p>
             <div class="forecastWeather__cardContainer">
               <div class="forecastWeather__card">
-                <p class="forecastWeather__time">6:00 am</p>
-                <img
-                  src="./assets/img/sunny_sun_cloud_time_time_2777.ico"
-                  alt=""
-                  class="forecastWeather__url"
-                />
-                <h5 class="forecastWeather__temperature">25°</h5>
+                <p class="forecastWeather__time"></p>
+                <img src="" alt="" class="forecastWeather__url" />
+                <h5 class="forecastWeather__temperature"></h5>
               </div>
               <div class="forecastWeather__card">
-                <p class="forecastWeather__time">6:00 am</p>
-                <img
-                  src="./assets/img/sunny_sun_cloud_time_time_2777.ico"
-                  alt=""
-                  class="forecastWeather__url"
-                />
-                <h5 class="forecastWeather__temperature">25°</h5>
+                <p class="forecastWeather__time"></p>
+                <img src="" alt="" class="forecastWeather__url" />
+                <h5 class="forecastWeather__temperature"></h5>
               </div>
               <div class="forecastWeather__card">
-                <p class="forecastWeather__time">6:00 am</p>
-                <img
-                  src="./assets/img/sunny_sun_cloud_time_time_2777.ico"
-                  alt=""
-                  class="forecastWeather__url"
-                />
-                <h5 class="forecastWeather__temperature">25°</h5>
+                <p class="forecastWeather__time"></p>
+                <img src="" alt="" class="forecastWeather__url" />
+                <h5 class="forecastWeather__temperature"></h5>
               </div>
               <div class="forecastWeather__card">
-                <p class="forecastWeather__time">6:00 am</p>
-                <img
-                  src="./assets/img/sunny_sun_cloud_time_time_2777.ico"
-                  alt=""
-                  class="forecastWeather__url"
-                />
-                <h5 class="forecastWeather__temperature">25°</h5>
+                <p class="forecastWeather__time"></p>
+                <img src="" alt="" class="forecastWeather__url" />
+                <h5 class="forecastWeather__temperature"></h5>
               </div>
               <div class="forecastWeather__card">
-                <p class="forecastWeather__time">6:00 am</p>
-                <img
-                  src="./assets/img/sunny_sun_cloud_time_time_2777.ico"
-                  alt=""
-                  class="forecastWeather__url"
-                />
-                <h5 class="forecastWeather__temperature">25°</h5>
+                <p class="forecastWeather__time"></p>
+                <img src="" alt="" class="forecastWeather__url" />
+                <h5 class="forecastWeather__temperature"></h5>
               </div>
               <div class="forecastWeather__card">
-                <p class="forecastWeather__time">6:00 am</p>
-                <img
-                  src="./assets/img/sunny_sun_cloud_time_time_2777.ico"
-                  alt=""
-                  class="forecastWeather__url"
-                />
-                <h5 class="forecastWeather__temperature">25°</h5>
+                <p class="forecastWeather__time"></p>
+                <img src="" alt="" class="forecastWeather__url" />
+                <h5 class="forecastWeather__temperature"></h5>
               </div>
             </div>
           </div>
@@ -110,14 +92,18 @@
                     <img src="./assets/svg/conditionTermometr.svg" alt="" />
                     <p>Real Feel</p>
                   </div>
-                  <h4 class="weatherConditions__temperature weatherConditions__mainCondition">30°</h4>
+                  <h4
+                    class="weatherConditions__temperature weatherConditions__mainCondition"
+                  ></h4>
                 </div>
                 <div class="weatherConditions__card">
                   <div class="weatherConditions__cardCondition">
                     <img src="./assets/svg/conditionRain.svg" alt="" />
                     <p>Chance of Rain</p>
                   </div>
-                  <h4 class="weatherConditions__chanceRain weatherConditions__mainCondition">0%</h4>
+                  <h4
+                    class="weatherConditions__chanceRain weatherConditions__mainCondition"
+                  ></h4>
                 </div>
               </div>
 
@@ -127,14 +113,18 @@
                     <img src="./assets/svg/conditionWind.svg" alt="" />
                     <p>Wind</p>
                   </div>
-                  <h4 class="weatherConditions__wind weatherConditions__mainCondition">0.2 km/h</h4>
+                  <h4
+                    class="weatherConditions__wind weatherConditions__mainCondition"
+                  ></h4>
                 </div>
                 <div class="weatherConditions__card">
                   <div class="weatherConditions__cardCondition">
                     <img src="./assets/svg/conditionUVIndex.svg" alt="" />
                     <p>UV Index</p>
                   </div>
-                  <h4 class="weatherConditions__uvIndex weatherConditions__mainCondition">3</h4>
+                  <h4
+                    class="weatherConditions__uvIndex weatherConditions__mainCondition"
+                  ></h4>
                 </div>
               </div>
             </div>
@@ -145,79 +135,86 @@
         <p class="__title">7-days forecast</p>
         <div class="daysForecast__main">
           <div class="daysForecast__card">
-            <p class="daysForecast__cardDay">Today</p>
+            <p class="daysForecast__cardDay"></p>
             <div class="daysForecast__cardForecast">
-              <img src="./assets/img/sityWeatherSun.png" alt="" class="daysForecast__url">
-              <h6 class="daysForecast__urlText">Sunny</h6>
+              <img src="" alt="" class="daysForecast__url" />
+              <h6 class="daysForecast__urlText"></h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">36</h6>
-              <p class="daysForecast__cardTemperatureMin">/22</p>
+              <h6 class="daysForecast__cardTemperatureMax"></h6>
+              <p class="daysForecast__cardTemperatureMin"></p>
             </div>
           </div>
           <div class="daysForecast__card">
-            <p class="daysForecast__cardDay">Today</p>
+            <p class="daysForecast__cardDay"></p>
             <div class="daysForecast__cardForecast">
-              <img src="./assets/img/sityWeatherSun.png" alt="" class="daysForecast__url">
-              <h6 class="daysForecast__urlText">Sunny</h6>
+              <img src="" alt="" class="daysForecast__url" />
+              <h6 class="daysForecast__urlText"></h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">36</h6>
-              <p class="daysForecast__cardTemperatureMin">/22</p>
+              <h6 class="daysForecast__cardTemperatureMax"></h6>
+              <p class="daysForecast__cardTemperatureMin"></p>
             </div>
-          </div><div class="daysForecast__card">
-            <p class="daysForecast__cardDay">Today</p>
+          </div>
+          <div class="daysForecast__card">
+            <p class="daysForecast__cardDay"></p>
             <div class="daysForecast__cardForecast">
-              <img src="./assets/img/sityWeatherSun.png" alt="" class="daysForecast__url">
-              <h6 class="daysForecast__urlText">Sunny</h6>
+              <img src="" alt="" class="daysForecast__url" />
+              <h6 class="daysForecast__urlText"></h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">36</h6>
-              <p class="daysForecast__cardTemperatureMin">/22</p>
+              <h6 class="daysForecast__cardTemperatureMax"></h6>
+              <p class="daysForecast__cardTemperatureMin"></p>
             </div>
-          </div><div class="daysForecast__card">
-            <p class="daysForecast__cardDay">Today</p>
+          </div>
+          <div class="daysForecast__card">
+            <p class="daysForecast__cardDay"></p>
             <div class="daysForecast__cardForecast">
-              <img src="./assets/img/sityWeatherSun.png" alt="" class="daysForecast__url">
-              <h6 class="daysForecast__urlText">Sunny</h6>
+              <img src="" alt="" class="daysForecast__url" />
+              <h6 class="daysForecast__urlText"></h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">36</h6>
-              <p class="daysForecast__cardTemperatureMin">/22</p>
+              <h6 class="daysForecast__cardTemperatureMax"></h6>
+              <p class="daysForecast__cardTemperatureMin"></p>
             </div>
-          </div><div class="daysForecast__card">
-            <p class="daysForecast__cardDay">Today</p>
+          </div>
+          <div class="daysForecast__card">
+            <p class="daysForecast__cardDay"></p>
             <div class="daysForecast__cardForecast">
-              <img src="./assets/img/sityWeatherSun.png" alt="" class="daysForecast__url">
-              <h6 class="daysForecast__urlText">Sunny</h6>
+              <img src="" alt="" class="daysForecast__url" />
+              <h6 class="daysForecast__urlText"></h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">36</h6>
-              <p class="daysForecast__cardTemperatureMin">/22</p>
+              <h6 class="daysForecast__cardTemperatureMax"></h6>
+              <p class="daysForecast__cardTemperatureMin"></p>
             </div>
-          </div><div class="daysForecast__card">
-            <p class="daysForecast__cardDay">Today</p>
+          </div>
+          <div class="daysForecast__card">
+            <p class="daysForecast__cardDay"></p>
             <div class="daysForecast__cardForecast">
-              <img src="./assets/img/sityWeatherSun.png" alt="" class="daysForecast__url">
-              <h6 class="daysForecast__urlText">Sunny</h6>
+              <img src="" alt="" class="daysForecast__url" />
+              <h6 class="daysForecast__urlText"></h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">36</h6>
-              <p class="daysForecast__cardTemperatureMin">/22</p>
+              <h6 class="daysForecast__cardTemperatureMax"></h6>
+              <p class="daysForecast__cardTemperatureMin"></p>
             </div>
-          </div><div class="daysForecast__card">
-            <p class="daysForecast__cardDay">Today</p>
+          </div>
+          <div class="daysForecast__card">
+            <p class="daysForecast__cardDay"></p>
             <div class="daysForecast__cardForecast">
-              <img src="./assets/img/sityWeatherSun.png" alt="" class="daysForecast__url">
-              <h6 class="daysForecast__urlText">Sunny</h6>
+              <img src="" alt="" class="daysForecast__url" />
+              <h6 class="daysForecast__urlText"></h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">36</h6>
-              <p class="daysForecast__cardTemperatureMin">/22</p>
+              <h6 class="daysForecast__cardTemperatureMax"></h6>
+              <p class="daysForecast__cardTemperatureMin"></p>
             </div>
           </div>
         </div>
       </aside>
     </div>
+    <script src="./userInfo.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
