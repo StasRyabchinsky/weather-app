@@ -178,6 +178,9 @@
     padding: 30px;
     color: white;
   }
+  .main__search input:hover{
+    cursor: pointer;
+  }
   .main__search__list{
     position: absolute;
     top: 100px;
@@ -210,6 +213,9 @@
     padding: 10px 10px;    
     background-color: inherit;
     border-radius: 0;
+  }
+  a.main__search__btn:hover{
+    cursor: pointer;
   }
   .main__search__btn>span{
     color: #9B9BAE;

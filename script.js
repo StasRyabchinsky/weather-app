@@ -29,6 +29,7 @@ const openListSearch = () =>{
               listEl.className = 'main__search__btn';
               list.appendChild(listEl);
         }
+
         let usersNode = list.childNodes
             usersNode.forEach(user => {
             user.addEventListener("click", click, false);
@@ -42,12 +43,12 @@ const openListSearch = () =>{
               fetch(sityNameWeather)
               .then(resp => resp.json())
               .then(dataSearch => {
-                const searchLocation = dataSearch.location.name;
-                const searchChanceOfRain = dataSearch.forecast.forecastday[0].day.daily_chance_of_rain;
-                const searchTemperature_c = dataSearch.current.temp_c;
-                const searchRealFeel = dataSearch.current.feelslike_c;
-                const searchWind = dataSearch.current.wind_kph;
-                const searchUV =dataSearch.current.uv;
+                const {name} = dataSearch.location;
+                const {daily_chance_of_rain} = dataSearch.forecast.forecastday[0].day;
+                const {temp_c} = dataSearch.current;
+                const {feelslike_c} = dataSearch.current;
+                const {wind_kph} = dataSearch.current;
+                const {uv} =dataSearch.current;
                 const searchURL = `https:${dataSearch.current.condition.icon}`;
                 
                 //defaultForecast-day-time
@@ -73,10 +74,10 @@ const openListSearch = () =>{
                 //searchForecast-week
                 const searchForecastWeek = [];
                 for(let i = 0;i <= 6;i++){
-                  const searchForecastoptions = {weekday:"short"}
+                  const searchForecastOptions = {weekday:"short"}
                   const searchForecastDate = new Date(dataSearch.forecast.forecastday[i].date);
                   const today = new Date()
-                  const searchForecastDayDay = (searchForecastDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', searchForecastoptions).format(searchForecastDate)
+                  const searchForecastDayDay = (searchForecastDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', searchForecastOptions).format(searchForecastDate)
                   const searchForecastDayUrl = `https:${dataSearch.forecast.forecastday[i].day.condition.icon}`;
                   const searchForecastDayText = dataSearch.forecast.forecastday[i].day.condition.text;
                   const searchForecastDayMaxTemperature = dataSearch.forecast.forecastday[i].day.maxtemp_c;
@@ -106,10 +107,10 @@ const openListSearch = () =>{
               <div class="sityWeather mainSize">
                 <div class="sityWeather__container">
                   <div class="sityWeather__containerForName">
-                    <h3 class="sityWeather__name">${searchLocation}</h3>
-                    <p class="sityWeather__chanceOfRain">Chance of rain: ${searchChanceOfRain}%</p>
+                    <h3 class="sityWeather__name">${name}</h3>
+                    <p class="sityWeather__chanceOfRain">Chance of rain: ${daily_chance_of_rain}%</p>
                   </div>
-                  <h2 class="sityWeather__temperature">${searchTemperature_c}°</h2>
+                  <h2 class="sityWeather__temperature">${temp_c}°</h2>
                 </div>
                 <img
                   src=${searchURL}
@@ -140,7 +141,7 @@ const openListSearch = () =>{
                       <h4
                         class="weatherConditions__temperature weatherConditions__mainCondition"
                       >
-                        ${searchRealFeel}°
+                        ${feelslike_c}°
                       </h4>
                     </div>
                     <div class="weatherConditions__card">
@@ -151,7 +152,7 @@ const openListSearch = () =>{
                       <h4
                         class="weatherConditions__chanceRain weatherConditions__mainCondition"
                       >
-                        ${searchChanceOfRain}%
+                        ${daily_chance_of_rain}%
                       </h4>
                     </div>
                   </div>
@@ -165,7 +166,7 @@ const openListSearch = () =>{
                       <h4
                         class="weatherConditions__wind weatherConditions__mainCondition"
                       >
-                        ${searchWind} km/h
+                        ${wind_kph} km/h
                       </h4>
                     </div>
                     <div class="weatherConditions__card">
@@ -176,7 +177,7 @@ const openListSearch = () =>{
                       <h4
                         class="weatherConditions__uvIndex weatherConditions__mainCondition"
                       >
-                        ${searchUV}
+                        ${uv}
                       </h4>
                     </div>
                   </div>
@@ -218,16 +219,16 @@ const defaultLocationWeather =`http://api.weatherapi.com/v1/forecast.json?key=85
       fetch(defaultLocationWeather)
       .then(resp => resp.json())
       .then(datadefault => {
-        const defaultLocation = datadefault.location.name;
-        const defaultChanceOfRain = datadefault.forecast.forecastday[0].day.daily_chance_of_rain;
-        const defaultTemperature_c = datadefault.current.temp_c;
-        const defaultRealFeel = datadefault.current.feelslike_c;
-        const defaultWind = datadefault.current.wind_kph;
-        const defaultUV =datadefault.current.uv;
+        const {name} = datadefault.location;
+        const {daily_chance_of_rain} = datadefault.forecast.forecastday[0].day;
+        const {temp_c} = datadefault.current;
+        const {feelslike_c} = datadefault.current;
+        const {wind_kph} = datadefault.current;
+        const {uv} =datadefault.current;
         const defaultURL = `https:${datadefault.current.condition.icon}`;
         
         //defaultForecast-day-time
-        const dafaultForecastTime = [];
+        const defaultForecastTime = [];
         for(let i = 6; i <= 21; i+=3){
           const defaultForecastHour = (datadefault.forecast.forecastday[0].hour[i].time).slice(-5);
           const defaultForecastTemperature =  Math.round(datadefault.forecast.forecastday[0].hour[i].temp_c);
@@ -249,10 +250,10 @@ const defaultLocationWeather =`http://api.weatherapi.com/v1/forecast.json?key=85
         //defaultForecast-week
         const defaultForecastWeek = [];
          for(let i = 0;i <= 6;i++){
-          const defaultoptions = {weekday:"short"}
+          const defaultOptions = {weekday:"short"}
           const defaultDate = new Date(datadefault.forecast.forecastday[i].date);
           const today = new Date()
-          const defaultDayDay = (defaultDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', defaultoptions).format(defaultDate)
+          const defaultDayDay = (defaultDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', defaultOptions).format(defaultDate)
           const defaultDayUrl = `https:${datadefault.forecast.forecastday[i].day.condition.icon}`;
           const defaultDayText = datadefault.forecast.forecastday[i].day.condition.text;
           const defaultDayMaxTemperature = datadefault.forecast.forecastday[i].day.maxtemp_c;
@@ -282,10 +283,10 @@ const defaultLocationWeather =`http://api.weatherapi.com/v1/forecast.json?key=85
       <div class="sityWeather mainSize">
         <div class="sityWeather__container">
           <div class="sityWeather__containerForName">
-            <h3 class="sityWeather__name">${defaultLocation}</h3>
-            <p class="sityWeather__chanceOfRain">Chance of rain: ${defaultChanceOfRain}%</p>
+            <h3 class="sityWeather__name">${name}</h3>
+            <p class="sityWeather__chanceOfRain">Chance of rain: ${daily_chance_of_rain}%</p>
           </div>
-          <h2 class="sityWeather__temperature">${defaultTemperature_c}°</h2>
+          <h2 class="sityWeather__temperature">${temp_c}°</h2>
         </div>
         <img
           src=${defaultURL}
@@ -316,7 +317,7 @@ const defaultLocationWeather =`http://api.weatherapi.com/v1/forecast.json?key=85
               <h4
                 class="weatherConditions__temperature weatherConditions__mainCondition"
               >
-                ${defaultRealFeel}°
+                ${feelslike_c}°
               </h4>
             </div>
             <div class="weatherConditions__card">
@@ -327,7 +328,7 @@ const defaultLocationWeather =`http://api.weatherapi.com/v1/forecast.json?key=85
               <h4
                 class="weatherConditions__chanceRain weatherConditions__mainCondition"
               >
-                ${defaultChanceOfRain}%
+                ${daily_chance_of_rain}%
               </h4>
             </div>
           </div>
@@ -341,7 +342,7 @@ const defaultLocationWeather =`http://api.weatherapi.com/v1/forecast.json?key=85
               <h4
                 class="weatherConditions__wind weatherConditions__mainCondition"
               >
-                ${defaultWind} km/h
+                ${wind_kph} km/h
               </h4>
             </div>
             <div class="weatherConditions__card">
@@ -352,7 +353,7 @@ const defaultLocationWeather =`http://api.weatherapi.com/v1/forecast.json?key=85
               <h4
                 class="weatherConditions__uvIndex weatherConditions__mainCondition"
               >
-                ${defaultUV}
+                ${uv}
               </h4>
             </div>
           </div>
@@ -384,12 +385,12 @@ const userlocation = () =>{
     fetch(userLocationWeather)
     .then(res => res.json())
     .then(dataCurrent => {
-      const currentLocation = dataCurrent.location.name;
-      const currentChanceOfRain = dataCurrent.forecast.forecastday[0].day.daily_chance_of_rain;
-      const currentTemperature_c = dataCurrent.current.temp_c;
-      const currentRealFeel = dataCurrent.current.feelslike_c;
-      const currentWind = dataCurrent.current.wind_kph;
-      const currentUV =dataCurrent.current.uv;
+      const {name} = dataCurrent.location;
+      const {daily_chance_of_rain} = dataCurrent.forecast.forecastday[0].day;
+      const {temp_c} = dataCurrent.current;
+      const {feelslike_c} = dataCurrent.current;
+      const {wind_kph} = dataCurrent.current;
+      const {uv} =dataCurrent.current;
       const currentURL = dataCurrent.current.condition.icon;
 
       //currentForecast-day-time
@@ -415,10 +416,10 @@ const userlocation = () =>{
       //currentForecast-week
       const currentForecastWeek = [];
       for(let i = 0;i <= 6;i++){
-       const currentoptions = {weekday:"short"}
+       const currentOptions = {weekday:"short"}
        const currentDate = new Date(dataCurrent.forecast.forecastday[i].date);
        const today = new Date()
-       const currentForecastDayDay = (currentDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', currentoptions).format(currentDate)
+       const currentForecastDayDay = (currentDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', currentOptions).format(currentDate)
        const currentForecastDayUrl = `https:${dataCurrent.forecast.forecastday[i].day.condition.icon}`;
        const currentForecastDayText = dataCurrent.forecast.forecastday[i].day.condition.text;
        const currentForecastDayMaxTemperature = dataCurrent.forecast.forecastday[i].day.maxtemp_c;
@@ -450,10 +451,10 @@ const userlocation = () =>{
       <div class="sityWeather mainSize">
         <div class="sityWeather__container">
           <div class="sityWeather__containerForName">
-            <h3 class="sityWeather__name">${currentLocation}</h3>
-            <p class="sityWeather__chanceOfRain">Chance of rain: ${currentChanceOfRain}%</p>
+            <h3 class="sityWeather__name">${name}</h3>
+            <p class="sityWeather__chanceOfRain">Chance of rain: ${daily_chance_of_rain}%</p>
           </div>
-          <h2 class="sityWeather__temperature">${currentTemperature_c}°</h2>
+          <h2 class="sityWeather__temperature">${temp_c}°</h2>
         </div>
         <img
           src=${currentURL}
@@ -484,7 +485,7 @@ const userlocation = () =>{
               <h4
                 class="weatherConditions__temperature weatherConditions__mainCondition"
               >
-                ${currentRealFeel}°
+                ${feelslike_c}°
               </h4>
             </div>
             <div class="weatherConditions__card">
@@ -495,7 +496,7 @@ const userlocation = () =>{
               <h4
                 class="weatherConditions__chanceRain weatherConditions__mainCondition"
               >
-                ${currentChanceOfRain}%
+                ${daily_chance_of_rain}%
               </h4>
             </div>
           </div>
@@ -509,7 +510,7 @@ const userlocation = () =>{
               <h4
                 class="weatherConditions__wind weatherConditions__mainCondition"
               >
-                ${currentWind} km/h
+                ${wind_kph} km/h
               </h4>
             </div>
             <div class="weatherConditions__card">
@@ -520,7 +521,7 @@ const userlocation = () =>{
               <h4
                 class="weatherConditions__uvIndex weatherConditions__mainCondition"
               >
-                ${currentUV}
+                ${uv}
               </h4>
             </div>
           </div>
