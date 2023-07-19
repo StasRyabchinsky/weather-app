@@ -6,64 +6,60 @@ const search = document.getElementById('input');
 const list = document.getElementById('list');
 
 const currentWeather = (url) => {
-  const LocationWeather = url;
-      fetch(LocationWeather)
+  const locationWeather = url;
+      fetch(locationWeather)
       .then(resp => resp.json())
       .then(data => {
         const {name} = data.location;
         const {daily_chance_of_rain} = data.forecast.forecastday[0].day;
-        const {temp_c} = data.current;
-        const {feelslike_c} = data.current;
-        const {wind_kph} = data.current;
-        const {uv} =data.current;
-        const URL = `https:${data.current.condition.icon}`;
+        const {temp_c, feelslike_c, wind_kph, uv} = data.current;
+        const url = `https:${data.current.condition.icon}`;
        
         //Forecast-day-time
-        const ForecastTime = [];
+        const forecastTime = [];
         for(let i = 6; i <= 21; i+=3){
-          const ForecastHour = (data.forecast.forecastday[0].hour[i].time).slice(-5);
-          const ForecastTemperature =  Math.round(data.forecast.forecastday[0].hour[i].temp_c);
-          const ForecastURL = `https:${data.forecast.forecastday[0].hour[i].condition.icon}`;
+          const forecastHour = (data.forecast.forecastday[0].hour[i].time).slice(-5);
+          const forecastTemperature =  Math.round(data.forecast.forecastday[0].hour[i].temp_c);
+          const forecastURL = `https:${data.forecast.forecastday[0].hour[i].condition.icon}`;
 
-          ForecastTime.push(
+          forecastTime.push(
             `<div class="forecastWeather__card">
-            <p class="forecastWeather__time">${ForecastHour} am</p>
+            <p class="forecastWeather__time">${forecastHour} am</p>
             <img
-              src=${ForecastURL}
+              src=${forecastURL}
               alt=""
               class="forecastWeather__url"
             />
-            <h5 class="forecastWeather__temperature">${ForecastTemperature}°</h5>
+            <h5 class="forecastWeather__temperature">${forecastTemperature}°</h5>
           </div>`
           )
         }
 
-        //Forecast-week
-        const ForecastWeek = [];
+        //forecast-week
+        const forecastWeek = [];
          for(let i = 0;i <= 6;i++){
-          const Options = {weekday:"short"}
+          const options = {weekday:"short"}
           const currentDate = new Date(data.forecast.forecastday[i].date);
           const today = new Date()
-          const DayDay = (currentDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', Options).format(currentDate)
-          const DayUrl = `https:${data.forecast.forecastday[i].day.condition.icon}`;
-          const DayText = data.forecast.forecastday[i].day.condition.text;
-          const DayMaxTemperature = data.forecast.forecastday[i].day.maxtemp_c;
-          const DayMinTemperature = data.forecast.forecastday[i].day.mintemp_c;
-          ForecastWeek.push (
+          const dayDay = (currentDate.getDay() == today.getDay()) ? 'Today' : new Intl.DateTimeFormat('en-US', options).format(currentDate)
+          const dayUrl = `https:${data.forecast.forecastday[i].day.condition.icon}`;
+          const dayText = data.forecast.forecastday[i].day.condition.text;
+          const {maxtemp_c, mintemp_c} = data.forecast.forecastday[i].day;
+          forecastWeek.push (
             `
             <div class="daysForecast__card">
-            <p class="daysForecast__cardDay">${DayDay}</p>
+            <p class="daysForecast__cardDay">${dayDay}</p>
             <div class="daysForecast__cardForecast">
               <img
-                src=${DayUrl}
+                src=${dayUrl}
                 alt=""
                 class="daysForecast__url"
               />
-              <h6 class="daysForecast__urlText">${DayText}</h6>
+              <h6 class="daysForecast__urlText">${dayText}</h6>
             </div>
             <div class="daysForecast__cardTemperature">
-              <h6 class="daysForecast__cardTemperatureMax">${DayMaxTemperature}</h6>
-              <p class="daysForecast__cardTemperatureMin">/${DayMinTemperature}</p>
+              <h6 class="daysForecast__cardTemperatureMax">${maxtemp_c}</h6>
+              <p class="daysForecast__cardTemperatureMin">/${mintemp_c}</p>
             </div>
           </div>
             `
@@ -80,7 +76,7 @@ const currentWeather = (url) => {
           <h2 class="sityWeather__temperature">${temp_c}°</h2>
         </div>
         <img
-          src=${URL}
+          src=${url}
           alt=""
           class="sityWeatherUrl"
         />
@@ -88,7 +84,7 @@ const currentWeather = (url) => {
       <div class="forecastWeather mainSize backColor">
         <p class="__title">today's forecast</p>
         <div class="forecastWeather__cardContainer">
-        ${ForecastTime.reduce(function(sum, current){
+        ${forecastTime.reduce(function(sum, current){
           return sum +=current;
         })}
         </div>
@@ -154,7 +150,7 @@ const currentWeather = (url) => {
       aside.innerHTML = `
       <p class="__title">7-days forecast</p>
       <div class="daysForecast__main">
-        ${ForecastWeek.reduce(function(sum, current){
+        ${forecastWeek.reduce(function(sum, current){
           return sum +=current;
         })}
       </div>
@@ -200,7 +196,7 @@ const openListSearch = () =>{
               document.getElementById('input').value ="";
               list.replaceChildren();
               
-              currentWeather(sityNameWeather)
+              currentWeather(sityNameWeather);
 
             }
       })
@@ -235,7 +231,7 @@ const userlocation = () =>{
     
     currentWeather(userLocationWeather);
 
-    wrapper.classList.toggle('spinner')
+    wrapper.classList.toggle('spinner');
   }
   const error = () =>{
       wrapper.classList.toggle('spinner')
